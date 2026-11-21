@@ -21,7 +21,7 @@ npm install
 npm run dev          # http://localhost:5173
 ```
 
-Para o assistente de IA (opcional; ver [docs/SUPABASE.md](docs/SUPABASE.md#2-assistente-de-ia)):
+Para o assistente de IA (opcional):
 
 ```bash
 cp .env.example .env               # preencha GEMINI_API_KEY (chave GRATUITA, projeto SEM faturamento)
@@ -35,8 +35,7 @@ plano gratuito, e o site continua funcionando normalmente sem o assistente.
 ## Hospedagem (gratuita)
 
 Preparada para o **Cloudflare Pages**: o site estático vem de `dist/`, e o backend de IA é uma Pages Function em
-`functions/api/ai/[[path]].ts`, no mesmo domínio. A chave fica como *Secret* do projeto. O passo a passo está em
-[docs/SUPABASE.md](docs/SUPABASE.md#4-hospedagem-gratuita-cloudflare-pages--pages-function). **Ainda não publicado.**
+`functions/api/ai/[[path]].ts`, no mesmo domínio. A chave fica como *Secret* do projeto. **Ainda não publicado.**
 
 ## Scripts
 
@@ -65,11 +64,3 @@ Preparada para o **Cloudflare Pages**: o site estático vem de `dist/`, e o back
 | `/historico` | Histórico de recomendações |
 | `/carrinho` | Carrinho e envio pelo WhatsApp |
 | `/admin` | Painel administrativo (modo local ou Supabase) |
-
-## Documentação
-
-- [docs/RELATORIO_PROJETO.md](docs/RELATORIO_PROJETO.md) — base do relatório acadêmico
-- [docs/TESTES.md](docs/TESTES.md) — testes executados e resultados
-- [docs/REGISTRO_PROMPTS.md](docs/REGISTRO_PROMPTS.md) — registro dos prompts
-- [docs/SUPABASE.md](docs/SUPABASE.md) — configuração externa: WhatsApp, IA (Gemini gratuito), Supabase e hospedagem na Cloudflare
-- [CLAUDE.md](CLAUDE.md) — regras e decisões permanentes do projeto
