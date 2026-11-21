@@ -1,32 +1,75 @@
-# React + TypeScript + Vite
+# Prainha — Marmitas congeladas
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Plataforma web da **Prainha** (marmitas congeladas, [@prainhanortemarmitas](https://www.instagram.com/prainhanortemarmitas/)):
+catálogo com busca e filtros, preferências alimentares, recomendações justificadas, favoritos, histórico, tema
+claro/escuro, carrinho com finalização pelo WhatsApp, assistente com IA (backend seguro) e painel administrativo.
 
-Currently, two official plugins are available:
+> **Catálogo demonstrativo.** Os produtos, preços e ingredientes atuais são exemplos criados para demonstrar a
+> plataforma (selo “Exemplo”). O cardápio real deve ser cadastrado pela Prainha no painel `/admin` ou no Supabase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+React 19 · Vite 8 · TypeScript 7 · React Router 8 · Three.js + React Three Fiber + Drei · GSAP · CSS3 (sem framework)
+· LocalStorage · Supabase (planejado) · Google Gemini API (**plano gratuito**) via backend próprio, com `fetch`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Como executar
 
-## Expanding the Oxlint configuration
+Requer **Node.js 24+**.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev          # http://localhost:5173
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Para o assistente de IA (opcional; ver [docs/SUPABASE.md](docs/SUPABASE.md#2-assistente-de-ia)):
+
+```bash
+cp .env.example .env               # preencha GEMINI_API_KEY (chave GRATUITA, projeto SEM faturamento)
+npm run ai:check                   # confere a configuração, sem chamar a IA
+npm run server                     # backend em http://127.0.0.1:8787 (o Vite encaminha /api)
+```
+
+O backend de IA não tem dependências (usa `fetch`). Orçamento do projeto: **R$ 0,00**. Só são aceitos modelos do
+plano gratuito, e o site continua funcionando normalmente sem o assistente.
+
+## Hospedagem (gratuita)
+
+Preparada para o **Cloudflare Pages**: o site estático vem de `dist/`, e o backend de IA é uma Pages Function em
+`functions/api/ai/[[path]].ts`, no mesmo domínio. A chave fica como *Secret* do projeto. O passo a passo está em
+[docs/SUPABASE.md](docs/SUPABASE.md#4-hospedagem-gratuita-cloudflare-pages--pages-function). **Ainda não publicado.**
+
+## Scripts
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run build` | Checagem de tipos + build de produção (`dist/`) |
+| `npm run preview` | Serve o build localmente |
+| `npm run lint` | Oxlint |
+| `npm test` | Testes unitários (executor nativo `node --test`) |
+| `npm run test:e2e` | Testes no navegador (Chrome headless); requer `npm run preview -- --port 4173` em execução |
+| `npm run server` | Backend local de IA |
+| `npm run ai:check` | Confere a configuração da IA (sem rede); `-- --live` faz 1 consulta real gratuita |
+| `npm run typecheck:server` | Checagem de tipos do backend (Node, Supabase Edge Function e Cloudflare Worker) |
+
+## Rotas
+
+| Rota | Página |
+|---|---|
+| `/` | Landing page com hero 3D |
+| `/cardapio` | Catálogo: busca, filtros (na URL) e ordenação |
+| `/cardapio/:slug` | Detalhes do produto |
+| `/preferencias` | Preferências alimentares + recomendações justificadas |
+| `/assistente` | Assistente com IA |
+| `/favoritos` | Favoritos |
+| `/historico` | Histórico de recomendações |
+| `/carrinho` | Carrinho e envio pelo WhatsApp |
+| `/admin` | Painel administrativo (modo local ou Supabase) |
+
+## Documentação
+
+- [docs/RELATORIO_PROJETO.md](docs/RELATORIO_PROJETO.md) — base do relatório acadêmico
+- [docs/TESTES.md](docs/TESTES.md) — testes executados e resultados
+- [docs/REGISTRO_PROMPTS.md](docs/REGISTRO_PROMPTS.md) — registro dos prompts
+- [docs/SUPABASE.md](docs/SUPABASE.md) — configuração externa: WhatsApp, IA (Gemini gratuito), Supabase e hospedagem na Cloudflare
+- [CLAUDE.md](CLAUDE.md) — regras e decisões permanentes do projeto

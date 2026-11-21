@@ -1,0 +1,13 @@
+# Modelo de configuração do Cloudflare Worker do assistente (NÃO implantado).
+# Copie para wrangler.toml quando decidir implantar. Requer a CLI wrangler (instalação precisa de autorização).
+# Segredos NÃO ficam neste arquivo: use `wrangler secret put GEMINI_API_KEY`.
+
+name = "prainha-ai"
+main = "ai-worker.ts"
+compatibility_date = "2026-11-01"
+
+[vars]
+AI_PROVIDER = "gemini"
+AI_MODEL = "gemini-3.5-flash-lite"
+AI_DAILY_LIMIT = "40"
+# ALLOWED_ORIGIN = "https://seu-dominio"

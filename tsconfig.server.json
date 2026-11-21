@@ -1,0 +1,19 @@
+{
+  // Checagem de tipos do backend de IA: servidor local, núcleo compartilhado, Edge Function, Cloudflare Worker e Pages Function.
+  // Sem dependências externas (apenas fetch e APIs web padrão). Uso: npm run typecheck:server
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "nodenext",
+    "types": ["node"],
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": ["server", "supabase/functions", "cloudflare", "functions"]
+}

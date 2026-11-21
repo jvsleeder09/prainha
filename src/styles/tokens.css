@@ -1,0 +1,107 @@
+/* =========================================================================
+   PRAINHA — Design tokens
+   Paleta da marca + escalas de tipografia, espaço, raio, sombra e movimento.
+   Tema claro é o padrão; [data-theme='dark'] sobrescreve os papéis semânticos.
+   ========================================================================= */
+
+:root {
+  /* Paleta da marca (valores fixos) */
+  --brand-red: #a51e25;
+  --brand-wine: #6f2426;
+  --brand-cream: #fff3df;
+  --brand-petrol: #17677a;
+  --brand-orange: #f28b26;
+  --brand-white: #ffffff;
+  --brand-ink: #292929;
+
+  /* Derivados */
+  --brand-red-600: #8d1820;
+  --brand-cream-200: #fbe6c4;
+  --brand-cream-300: #f5d9ab;
+  --brand-petrol-300: #6fb3c1;
+  --brand-orange-200: #fcd3a6;
+  --brand-leaf: #4e8b3a;
+
+  /* Papéis semânticos — tema claro */
+  --bg: var(--brand-cream);
+  --bg-elevated: var(--brand-white);
+  --bg-sunken: var(--brand-cream-200);
+  --text: var(--brand-ink);
+  --text-muted: #5c5050;
+  --text-on-accent: var(--brand-white);
+  --primary: var(--brand-red);
+  --primary-hover: var(--brand-red-600);
+  --secondary: var(--brand-petrol);
+  --highlight: var(--brand-orange);
+  --line: #e6cfa9;
+  --line-strong: var(--brand-wine);
+  --focus: var(--brand-petrol);
+  --success: #2f7a3a;
+  --warning: #9a5a00;
+  --danger: var(--brand-red);
+  --shadow-color: 111deg 36% 12%;
+  --card-shadow: 4px 4px 0 var(--brand-wine);
+  --sun: #ffd79a;
+
+  /* Tipografia */
+  --font-display: 'Fraunces', 'Recoleta', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.9rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.15rem;
+  --fs-xl: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  --fs-2xl: clamp(1.8rem, 1.3rem + 2vw, 2.6rem);
+  --fs-3xl: clamp(2.4rem, 1.4rem + 4.4vw, 4.6rem);
+  --lh-tight: 1.08;
+  --lh-body: 1.6;
+
+  /* Espaçamento (escala de 4px) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 6rem;
+
+  /* Forma */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --border: 2px solid var(--line);
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 140ms;
+  --dur-med: 260ms;
+  --dur-slow: 600ms;
+
+  /* Layout */
+  --container: 1200px;
+  --header-h: 72px;
+}
+
+[data-theme='dark'] {
+  --bg: #1c1516;
+  --bg-elevated: #2a2021;
+  --bg-sunken: #140f10;
+  --text: #fbefdc;
+  --text-muted: #cdb9a6;
+  --primary: #c8323a;
+  --primary-hover: #dc4048;
+  --secondary: var(--brand-petrol-300);
+  --highlight: var(--brand-orange);
+  --line: #4a3536;
+  --line-strong: #e7c9a0;
+  --focus: var(--brand-orange);
+  --success: #7ccf86;
+  --warning: #ffc069;
+  --danger: #ff7a7f;
+  --card-shadow: 4px 4px 0 #000;
+  --sun: #6f2426;
+}

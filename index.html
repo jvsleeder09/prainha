@@ -1,12 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>prainha</title>
+    <title>Prainha · Marmitas congeladas</title>
+    <meta
+      name="description"
+      content="Prainha: marmitas congeladas prontas para o dia a dia. Sabor caseiro, praticidade e qualidade. Monte seu pedido e finalize pelo WhatsApp."
+    />
+    <meta name="theme-color" content="#FFF3DF" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content="Prainha · Marmitas congeladas" />
+    <meta property="og:description" content="Sabor caseiro • praticidade • qualidade" />
+    <meta property="og:type" content="website" />
+    <script>
+      // Aplica o tema salvo antes da renderização, evitando "piscar" o tema errado.
+      ;(function () {
+        try {
+          var raw = localStorage.getItem('prainha:v1:theme')
+          var t = raw ? JSON.parse(raw) : null
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+          document.documentElement.dataset.theme = t
+          document.documentElement.style.colorScheme = t
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
   </head>
   <body>
+    <noscript>
+      <p style="padding: 1rem; font-family: sans-serif">
+        A Prainha precisa de JavaScript ativado para exibir o cardápio e montar pedidos.
+      </p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

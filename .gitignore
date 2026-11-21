@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variáveis de ambiente (segredos)
+.env
+.env.*
+!.env.example
+
+# Supabase CLI
+supabase/.temp
+supabase/.branches
+
+# Cloudflare (segredos locais do Wrangler e cache)
+.dev.vars*
+.wrangler/
+
+# Instruções locais do assistente (não versionar)
+CLAUDE.md
